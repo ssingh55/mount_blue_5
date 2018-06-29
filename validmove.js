@@ -12,28 +12,23 @@ function isValidMovePawn(evEleId,currEleId, color, diff) {
     }
 }
 
-function isValidMoveKing(evEleId,currenEleId,color,diff){
-	if(color=='black'){
-		if(diff==1)
-		{
-			return true;
-		}
-		else if(diff==-1)
+function isValidMoveKing(evEleId,currenEleId,diff){
+		if(diff==1||diff==-1)
 		{
 			return true;
 		}
 		else if(diff==0)
 		{
 			if(String.fromCharCode(evEleId.charCodeAt() + 1)==currenEleId.substring(0,1))
-				return true;
+				return true
 			else if(String.fromCharCode(evEleId.charCodeAt() - 1)==currenEleId.substring(0,1))
 				return true;
 			else
 				return false;
 		}
 	}
-	else if(color = 'white')
-	{
 
-	}
+function isValidMoveRook(evEleId,currenEleId,color){
+	if(evEleId.substring(0,1)==currenEleId.substring(0,1)||evEleId.substring(1)==currenEleId.substring(1))
+		return true;
 }
