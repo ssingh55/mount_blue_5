@@ -1,3 +1,4 @@
+//creating new board on call
 function newBoard(){
 	var divId = document.getElementById("mainChessBoard");
 	for(var i=1;i<=8;i++){
@@ -28,6 +29,7 @@ function newBoard(){
 	rearrangementOfItems();
 }
 
+//assigning the piece
 function itemsAssignment(divEle,image,imageId,imageClass){
 	divEle;
 	divEle.src=image;
@@ -40,7 +42,7 @@ function rearrangementOfItems(){
 	var imgEle;
 	var divId;
 	var divEle;
-	var varb;
+	var varb;//just a variable
 	for(var i=1;i<=8;i++){
 		var a="a";
 		for(var j=1;j<=8;j++){
@@ -67,78 +69,59 @@ function rearrangementOfItems(){
 				// divEle.style.height = "30px";
 			}
 			else if (varb=="h1") {
-				divEle.src="images/wr.png";
-				divEle.id=`white_rook_${varb.substring(0,1)}`;
-				divEle.classList="white";
+				itemsAssignment(divEle,"images/wr.png",`white_rook_${varb.substring(0,1)}`,"white");
 			}
 			else if (varb=="b1"){
-				divEle.src="images/wn.png";
-				divEle.id=`white_knight_${varb.substring(0,1)}`;
-				divEle.classList="white";
+				itemsAssignment(divEle,"images/wn.png",`white_knight_${varb.substring(0,1)}`,"white");
 			}
 			else if (varb==="g1"){
-				divEle.src="images/wn.png";
-				divEle.id=`white_knight_${varb.substring(0,1)}`;
-				divEle.classList="white";
+				itemsAssignment(divEle,"images/wn.png",`white_knight_${varb.substring(0,1)}`,"white");
 			}
 
 			else if (varb=="c1"){
-				divEle.src="images/wb.png";
-				divEle.id=`white_bishop_${varb.substring(0,1)}`;
-				divEle.classList="white";
+				itemsAssignment(divEle,"images/wb.png",`white_bishop_${varb.substring(0,1)}`,"white");
 			}
 			else if (varb==="f1"){
-				divEle.src="images/wb.png";
-				divEle.id=`white_bishop_${varb.substring(0,1)}`;
-				divEle.classList="white";
+				itemsAssignment(divEle,"images/wb.png",`white_bishop_${varb.substring(0,1)}`,"white");
 			}
 
 			else if (varb=="d1"){
-				divEle.src="images/wq.png";
-				divEle.id=`white_queen`;
-				divEle.classList="white";
+				itemsAssignment(divEle,"images/wq.png",`white_queen`,"white");
 			}
 
 			else if (varb==="e1"){
-				divEle.src="images/wk.png";
-				divEle.id=`white_king`;
-				divEle.classList="white";
+				itemsAssignment(divEle,"images/wk.png",`white_king`,"white");
 			}
 			else if (varb.substring(1)=="2"){
-				divEle.src="images/wp.png";
-				divEle.id=`white_pawn_${varb.substring(0,1)}`;
-				divEle.classList="white";
+				itemsAssignment(divEle,"images/wp.png",`white_pawn_${varb.substring(0,1)}`,"white");
 			}
 			//black
-			else if (varb==="a8"||varb=="h8"){
-				divEle.src="images/br.png";
-				divEle.id=`black_rook_${varb.substring(0,1)}`;
-				divEle.classList="black";
+			else if (varb==="a8"){
+				itemsAssignment(divEle,"images/br.png",`black_rook_${varb.substring(0,1)}`,"black");
 			}
-			else if (varb=="b8"||varb==="g8"){
-				divEle.src="images/bn.png";
-				divEle.id=`black_knight_${varb.substring(0,1)}`;
-				divEle.classList="black";
+			else if (varb=="h8"){
+				itemsAssignment(divEle,"images/br.png",`black_rook_${varb.substring(0,1)}`,"black");
 			}
-			else if (varb=="c8"||varb==="f8"){
-				divEle.src="images/bb.png";
-				divEle.id=`black_bishop_${varb.substring(0,1)}`;
-				divEle.classList="black";
+			else if (varb=="b8"){
+				itemsAssignment(divEle,"images/bn.png",`black_knight_${varb.substring(0,1)}`,"black");
+			}
+			else if (varb==="g8"){
+				itemsAssignment(divEle,"images/bn.png",`black_knight_${varb.substring(0,1)}`,"black");
+			}
+			else if (varb=="c8"){
+				itemsAssignment(divEle,"images/bb.png",`black_bishop_${varb.substring(0,1)}`,"black");
+			}
+			else if (varb==="f8"){
+				itemsAssignment(divEle,"images/bb.png",`black_bishop_${varb.substring(0,1)}`,"black");
 			}
 			else if (varb=="d8"){
-				divEle.src="images/bk.png";
-				divEle.id=`black_king`;
-				divEle.classList="black";
+				itemsAssignment(divEle,"images/bk.png",`black_king`,"black");
 			}
 			else if (varb==="e8"){
-				divEle.src="images/bq.png";
-				divEle.id=`black_queen`;
-				divEle.classList="black";
+				itemsAssignment(divEle,"images/bq.png",`black_queen`,"black");
 			}
 			else if (varb.substring(1)=="7"){
-				divEle.src="images/bp.png";
-				divEle.id=`black_pawn_${varb.substring(0,1)}`;
-				divEle.classList="black";
+				itemsAssignment(divEle,"images/bp.png",`black_pawn_${varb.substring(0,1)}`,"black");
 			}
 			a=String.fromCharCode(a.charCodeAt()+1);
 		}
