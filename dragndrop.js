@@ -21,12 +21,12 @@ function registerTheElementId(ev) {
 function addTheElement(ev) {
     // console.log(ev);
     //changes the turn
-    /*if(color==nextColor&&color=="white")
+    if(color==nextColor&&color=="white")
         nextColor ="black";
     else if(color==nextColor&&color=="black")
         nextColor ="white";
     else 
-        return;*/
+        return;
 
     if (piece_name.substring(0, 4) == "pawn") piece_name = "pawn";
     else if (piece_name.substring(0, 6) == "knight") piece_name = "knight";
@@ -37,7 +37,19 @@ function addTheElement(ev) {
         case "king":
             var diff = Number((currEleId + "").substring(1)) - Number(ev.toElement.id.substring(1));
             // console.log(diff);
-            if (isValidMoveKing(ev.toElement.id, currEleId, diff)) {
+            var pdiff = Number((currEleId + "").substring(1)) - Number(ev.toElement.parentNode.id.substring(1));
+            console.log(ev.toElement.parentNode.id, currEleId, diff);
+            if (isValidMoveKing(ev.toElement.parentNode.id, currEleId, pdiff) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
+                var eleId = ev.dataTransfer.getData('text');
+                var ele = document.getElementById(eleId);
+                temp = ev.target.parentNode;
+                if (ev.target.tagName.toUpperCase() == 'IMG') {
+                    // ev.target.parentNode;
+                    ev.target.remove();
+                    console.log(ev.target.parentNode);
+                }
+                temp.appendChild(ele);
+            } else if (isValidMoveKing(ev.toElement.id, currEleId, diff)) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
@@ -45,7 +57,17 @@ function addTheElement(ev) {
             break;
             //check for bishop
         case "bishop":
-            if (isValidMoveBishop(ev.toElement.id, currEleId)) {
+            if (isValidMoveBishop(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
+                var eleId = ev.dataTransfer.getData('text');
+                var ele = document.getElementById(eleId);
+                temp = ev.target.parentNode;
+                if (ev.target.tagName.toUpperCase() == 'IMG') {
+                    // ev.target.parentNode;
+                    ev.target.remove();
+                    console.log(ev.target.parentNode);
+                }
+                temp.appendChild(ele);
+            } else if (isValidMoveBishop(ev.toElement.id, currEleId)) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
@@ -53,20 +75,17 @@ function addTheElement(ev) {
             break;
 
         case "rook":
-            // console.log(color!=ev.path[0].classList[0]);
-            // console.log(ev);
-            if (isValidMoveRookKill(ev.toElement.id, currEleId) && ev.path[0].classList[0]==(color=='white'?'black':'white')) {
+            //check for rook
+            if (isValidMoveRook(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
-                // console.log(currEleId);
-                // console.log("hello"+ev.removeChild(currEleId));
-                // console.log(ev);
-                console.log(ev.target.parentNode);
+                temp = ev.target.parentNode;
                 if (ev.target.tagName.toUpperCase() == 'IMG') {
+                    // ev.target.parentNode;
                     ev.target.remove();
+                    console.log(ev.target.parentNode);
                 }
-                console.log(ev.target.parentNode);
-                ev.target.parentNode.appendChild(ele);
+                temp.appendChild(ele);
             } else if (isValidMoveRook(ev.toElement.id, currEleId)) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
@@ -75,22 +94,57 @@ function addTheElement(ev) {
             break;
 
         case "knight":
-            if (isValidMoveKnight(ev.toElement.id, currEleId)) {
+            if (isValidMoveKnight(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
+                var eleId = ev.dataTransfer.getData('text');
+                var ele = document.getElementById(eleId);
+                temp = ev.target.parentNode;
+                if (ev.target.tagName.toUpperCase() == 'IMG') {
+                    // ev.target.parentNode;
+                    ev.target.remove();
+                    console.log(ev.target.parentNode);
+                }
+                temp.appendChild(ele);
+            } else if (isValidMoveKnight(ev.toElement.id, currEleId)) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
             }
             break;
+
+            //check it
         case "queen":
-            if (isValidMoveRook(ev.toElement.id, currEleId) || (isValidMoveBishop(ev.toElement.id, currEleId))) {
+        if ((isValidMoveRook(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white'))||isValidMoveBishop(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
+                var eleId = ev.dataTransfer.getData('text');
+                var ele = document.getElementById(eleId);
+                temp = ev.target.parentNode;
+                if (ev.target.tagName.toUpperCase() == 'IMG') {
+                    // ev.target.parentNode;
+                    ev.target.remove();
+                    console.log(ev.target.parentNode);
+                }
+                temp.appendChild(ele);
+            } 
+            else if (isValidMoveRook(ev.toElement.id, currEleId) || (isValidMoveBishop(ev.toElement.id, currEleId))) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
             }
             break;
+
+            //pawn
         case "pawn":
             var diff = Number((currEleId + "").substring(1)) - Number(ev.toElement.id.substring(1));
-            if (isValidMovePawn(ev.toElement.id, currEleId, color, diff)) {
+            if (isValidMovePawn(ev.toElement.parentNode.id, currEleId, color, diff) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
+                var eleId = ev.dataTransfer.getData('text');
+                var ele = document.getElementById(eleId);
+                temp = ev.target.parentNode;
+                if (ev.target.tagName.toUpperCase() == 'IMG') {
+                    // ev.target.parentNode;
+                    ev.target.remove();
+                    console.log(ev.target.parentNode);
+                }
+                temp.appendChild(ele);
+            } else if (isValidMovePawn(ev.toElement.id, currEleId, color, diff)) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
