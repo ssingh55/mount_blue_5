@@ -26,44 +26,46 @@ function addTheElement(ev) {
     switch (piece_name) {
         //check for pawn
         case "king":
-        	var diff = Number((currEleId + "").substring(1)) - Number(ev.toElement.id.substring(1));
-        	console.log(diff);
-        	if (isValidMoveKing(ev.toElement.id,currEleId,diff)) {
+            var diff = Number((currEleId + "").substring(1)) - Number(ev.toElement.id.substring(1));
+            console.log(diff);
+            if (isValidMoveKing(ev.toElement.id, currEleId, diff)) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
             }
             break;
         case "bishop":
-        	if(isValidMoveBishop(ev.toElement.id,currEleId
-        		)){
-        		var eleId = ev.dataTransfer.getData('text');
+            if (isValidMoveBishop(ev.toElement.id, currEleId)) {
+                var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
-        	}
-        	break;
+            }
+            break;
         case "rook":
-        	if (isValidMoveRook(ev.toElement.id,currEleId)) {
-        		var eleId = ev.dataTransfer.getData('text');
+            if (isValidMoveRook(ev.toElement.id, currEleId)) {
+                var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
-        	}
-        	break;
+            }
+            break;
 
         case "knight":
-
-
-        case "queen":
-        	if (isValidMoveRook(ev.toElement.id,currEleId)||(isValidMoveBishop(ev.toElement.id,currEleId
-        		))) {
-        		var eleId = ev.dataTransfer.getData('text');
+            if(isValidMoveKnight(ev.toElement.id, currEleId)){
+                var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
-        	}
+            }
+            break;
+        case "queen":
+            if (isValidMoveRook(ev.toElement.id, currEleId) || (isValidMoveBishop(ev.toElement.id, currEleId))) {
+                var eleId = ev.dataTransfer.getData('text');
+                var ele = document.getElementById(eleId);
+                ev.target.appendChild(ele);
+            }
             break;
         case "pawn":
             var diff = Number((currEleId + "").substring(1)) - Number(ev.toElement.id.substring(1));
-            if (isValidMovePawn(ev.toElement.id,currEleId, color, diff)) {
+            if (isValidMovePawn(ev.toElement.id, currEleId, color, diff)) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
