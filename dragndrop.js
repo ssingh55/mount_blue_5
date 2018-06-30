@@ -38,7 +38,7 @@ function addTheElement(ev) {
             var diff = Number((currEleId + "").substring(1)) - Number(ev.toElement.id.substring(1));
             // console.log(diff);
             var pdiff = Number((currEleId + "").substring(1)) - Number(ev.toElement.parentNode.id.substring(1));
-            console.log(ev.toElement.parentNode.id, currEleId, diff);
+            // console.log(ev.toElement.parentNode.id, currEleId, diff);
             if (isValidMoveKing(ev.toElement.parentNode.id, currEleId, pdiff) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
@@ -46,7 +46,7 @@ function addTheElement(ev) {
                 if (ev.target.tagName.toUpperCase() == 'IMG') {
                     // ev.target.parentNode;
                     ev.target.remove();
-                    console.log(ev.target.parentNode);
+                    // console.log(ev.target.parentNode);
                 }
                 temp.appendChild(ele);
             } else if (isValidMoveKing(ev.toElement.id, currEleId, diff)) {
@@ -64,7 +64,7 @@ function addTheElement(ev) {
                 if (ev.target.tagName.toUpperCase() == 'IMG') {
                     // ev.target.parentNode;
                     ev.target.remove();
-                    console.log(ev.target.parentNode);
+                    // console.log(ev.target.parentNode);
                 }
                 temp.appendChild(ele);
             } else if (isValidMoveBishop(ev.toElement.id, currEleId)) {
@@ -83,7 +83,7 @@ function addTheElement(ev) {
                 if (ev.target.tagName.toUpperCase() == 'IMG') {
                     // ev.target.parentNode;
                     ev.target.remove();
-                    console.log(ev.target.parentNode);
+                    // console.log(ev.target.parentNode);
                 }
                 temp.appendChild(ele);
             } else if (isValidMoveRook(ev.toElement.id, currEleId)) {
@@ -101,7 +101,7 @@ function addTheElement(ev) {
                 if (ev.target.tagName.toUpperCase() == 'IMG') {
                     // ev.target.parentNode;
                     ev.target.remove();
-                    console.log(ev.target.parentNode);
+                    // console.log(ev.target.parentNode);
                 }
                 temp.appendChild(ele);
             } else if (isValidMoveKnight(ev.toElement.id, currEleId)) {
@@ -120,7 +120,7 @@ function addTheElement(ev) {
                 if (ev.target.tagName.toUpperCase() == 'IMG') {
                     // ev.target.parentNode;
                     ev.target.remove();
-                    console.log(ev.target.parentNode);
+                    // console.log(ev.target.parentNode);
                 }
                 temp.appendChild(ele);
             } 
@@ -134,14 +134,15 @@ function addTheElement(ev) {
             //pawn
         case "pawn":
             var diff = Number((currEleId + "").substring(1)) - Number(ev.toElement.id.substring(1));
-            if (isValidMovePawn(ev.toElement.parentNode.id, currEleId, color, diff) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
+            //console.log(diff);
+            if (isValidMovePawnKill(ev.toElement.parentNode.id, currEleId, color, diff) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 temp = ev.target.parentNode;
                 if (ev.target.tagName.toUpperCase() == 'IMG') {
                     // ev.target.parentNode;
                     ev.target.remove();
-                    console.log(ev.target.parentNode);
+                    // console.log(ev.target.parentNode);
                 }
                 temp.appendChild(ele);
             } else if (isValidMovePawn(ev.toElement.id, currEleId, color, diff)) {

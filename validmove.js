@@ -14,19 +14,19 @@ function isValidMovePawn(evEleId, currEleId, color, diff) {
 
 
 function isValidMovePawnKill(evEleId, currEleId, color, diff) {
+   console.log(evEleId.substring(1)+"    "+ Number((currEleId + "").substring(1)));
     if (color == 'black') {
-        if (Number((currEleId + "").substring(1)) == 7 && diff == 2)
-            return evEleId == (currEleId + "").substring(0, 1) + "" + (Number((currEleId + "").substring(1)) - 2);
+        if(evEleId.substring(0,1)==(String.fromCharCode((currEleId + "").charCodeAt(0)-1)))
+            return evEleId == String.fromCharCode((currEleId + "").charCodeAt(0)-1) + "" + (Number((currEleId + "").substring(1)) - 1);
         else
-            return evEleId == (currEleId + "").substring(0, 1) + "" + (Number((currEleId + "").substring(1)) - 1);
+            return evEleId == String.fromCharCode((currEleId + "").charCodeAt(0)+1) + "" + (Number((currEleId + "").substring(1)) - 1);
     } else if (color == 'white') {
-        if (Number((currEleId + "").substring(1)) == 2 && diff == -2)
-            return evEleId == (currEleId + "").substring(0, 1) + "" + (Number((currEleId + "").substring(1)) + 2);
+        if(evEleId.substring(0,1)==(String.fromCharCode((currEleId + "").charCodeAt(0)-1)))
+            return evEleId == String.fromCharCode((currEleId + "").charCodeAt(0)-1) + "" + (Number((currEleId + "").substring(1)) + 1);
         else
-            return evEleId == (currEleId + "").substring(0, 1) + "" + (Number((currEleId + "").substring(1)) + 1);
+            return evEleId == String.fromCharCode((currEleId + "").charCodeAt(0)+1) + "" + (Number((currEleId + "").substring(1)) + 1);
     }
 }
-
 
 
 function isValidMoveKing(evEleId, currenEleId, diff) {
