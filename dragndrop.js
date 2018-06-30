@@ -18,7 +18,7 @@ function registerTheElementId(ev) {
 }
 
 function addTheElement(ev) {
-    // console.log(ev);
+    console.log(ev);
     if (piece_name.substring(0, 4) == "pawn") piece_name = "pawn";
     else if (piece_name.substring(0, 6) == "knight") piece_name = "knight";
     else if (piece_name.substring(0, 4) == "rook") piece_name = "rook";
@@ -33,19 +33,33 @@ function addTheElement(ev) {
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
             }
+            break;
         case "bishop":
-
+        	if(isValidMoveBishop(ev.toElement.id,currEleId
+        		)){
+        		var eleId = ev.dataTransfer.getData('text');
+                var ele = document.getElementById(eleId);
+                ev.target.appendChild(ele);
+        	}
+        	break;
         case "rook":
         	if (isValidMoveRook(ev.toElement.id,currEleId)) {
         		var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
         	}
+        	break;
 
         case "knight":
 
 
         case "queen":
+        	if (isValidMoveRook(ev.toElement.id,currEleId)||(isValidMoveBishop(ev.toElement.id,currEleId
+        		))) {
+        		var eleId = ev.dataTransfer.getData('text');
+                var ele = document.getElementById(eleId);
+                ev.target.appendChild(ele);
+        	}
             break;
         case "pawn":
             var diff = Number((currEleId + "").substring(1)) - Number(ev.toElement.id.substring(1));

@@ -28,7 +28,16 @@ function isValidMoveKing(evEleId,currenEleId,diff){
 		}
 	}
 
-function isValidMoveRook(evEleId,currenEleId,color){
+function isValidMoveRook(evEleId,currenEleId){
 	if(evEleId.substring(0,1)==currenEleId.substring(0,1)||evEleId.substring(1)==currenEleId.substring(1))
 		return true;
 }
+
+function isValidMoveBishop(evEleId,currenEleId){
+	if(Math.abs(evEleId.charCodeAt(0)-currenEleId.charCodeAt(0))==Math.abs(Number(evEleId.substring(1)-currenEleId.substring(1))))
+		return true;
+}
+
+function isValidMoveQueen(){}
+
+function isValidMoveKnight(evEleId,currenEleId){}

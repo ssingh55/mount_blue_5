@@ -79,6 +79,7 @@ function rearrangementOfItems() {
                     break;
                 case "c1":
                     itemsAssignment(divEle, "images/wb.png", `white_bishop_${varb.substring(0,1)}`, "white");
+                    break;
                 case "f1":
                     itemsAssignment(divEle, "images/wb.png", `white_bishop_${varb.substring(0,1)}`, "white");
                     break;
