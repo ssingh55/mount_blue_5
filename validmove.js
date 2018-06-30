@@ -26,7 +26,7 @@ function isValidMoveKing(evEleId, currenEleId, diff) {
 }
 
 function isValidMoveRook(evEleId, currenEleId) {
-    if (evEleId.substring(0, 1) == currenEleId.substring(0, 1) || evEleId.substring(1) == currenEleId.substring(1))
+	if (evEleId.substring(0, 1) == currenEleId.substring(0, 1) || evEleId.substring(1) == currenEleId.substring(1))
         return true;
 }
 
@@ -38,12 +38,17 @@ function isValidMoveBishop(evEleId, currenEleId) {
 function isValidMoveQueen() {}
 
 function isValidMoveKnight(evEleId, currenEleId) {
-	console.log((evEleId.charCodeAt(0))+" "+(currenEleId.charCodeAt(0)+1) +" "+(Number(evEleId.substring(1)))+" "+Number(currenEleId.substring(1))+2);
-	console.log((evEleId.charCodeAt(0))+"  "+(currenEleId.charCodeAt(0)+1)+" asas "+(Number(evEleId.substring(1)))+"  "+Number(currenEleId.substring(1)-2));
+	// console.log((evEleId.charCodeAt(0))+" "+(currenEleId.charCodeAt(0)+1) +" "+(Number(evEleId.substring(1)))+" "+Number(currenEleId.substring(1))+2);
+	// console.log((evEleId.charCodeAt(0))+"  "+(currenEleId.charCodeAt(0)+1)+" asas "+(Number(evEleId.substring(1)))+"  "+Number(currenEleId.substring(1)-2));
 	if(Math.abs(evEleId.charCodeAt(0)-currenEleId.charCodeAt(0))==1 &&Math.abs(Number(evEleId.substring(1))-Number(currenEleId.substring(1)))==2)
 		return true;
 	else if(Math.abs(evEleId.charCodeAt(0)-currenEleId.charCodeAt(0))==2 &&Math.abs(Number(evEleId.substring(1))-Number(currenEleId.substring(1)))==1)
 		return true;
 
 
+}
+
+function isValidMoveRookKill(evEleId, currenEleId){
+	// if (evEleId.substring(0, 1) == currenEleId.substring(0, 1) || evEleId.substring(1) == currenEleId.substring(1))
+        return true;
 }
