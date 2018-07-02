@@ -21,12 +21,14 @@ function registerTheElementId(ev) {
 function addTheElement(ev) {
     // console.log(ev);
     //changes the turn
-    // if(color==nextColor&&color=="white")
-    //     nextColor ="black";
-    // else if(color==nextColor&&color=="black")
-    //     nextColor ="white";
-    // else 
-    //     return;
+    if(color==nextColor&&color=="white")
+        nextColor ="black";
+    else if(color==nextColor&&color=="black")
+        nextColor ="white";
+    else {
+        alert('its not your turn');
+        return;
+    }
 
     if (piece_name.substring(0, 4) == "pawn") piece_name = "pawn";
     else if (piece_name.substring(0, 6) == "knight") piece_name = "knight";
