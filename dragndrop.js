@@ -21,10 +21,10 @@ function registerTheElementId(ev) {
 function addTheElement(ev) {
     // console.log(ev);
     //changes the turn
-    if(color==nextColor&&color=="white")
-        nextColor ="black";
-    else if(color==nextColor&&color=="black")
-        nextColor ="white";
+    if (color == nextColor && color == "white")
+        nextColor = "black";
+    else if (color == nextColor && color == "black")
+        nextColor = "white";
     else {
         alert('its not your turn');
         return;
@@ -74,6 +74,7 @@ function addTheElement(ev) {
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
             }
+
             break;
 
         case "rook":
@@ -115,9 +116,11 @@ function addTheElement(ev) {
 
             //check it
         case "queen":
-        if ((isValidMoveRook(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white'))||isValidMoveBishop(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
+            if ((isValidMoveRook(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) || isValidMoveBishop(ev.toElement.parentNode.id, currEleId) && ev.path[0].classList[0] == (color == 'white' ? 'black' : 'white')) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
+                if (ev.target.id == "black_king")
+                    alert("game over king cannot defend himself");
                 temp = ev.target.parentNode;
                 if (ev.target.tagName.toUpperCase() == 'IMG') {
                     // ev.target.parentNode;
@@ -125,8 +128,7 @@ function addTheElement(ev) {
                     // console.log(ev.target.parentNode);
                 }
                 temp.appendChild(ele);
-            } 
-            else if (isValidMoveRook(ev.toElement.id, currEleId) || (isValidMoveBishop(ev.toElement.id, currEleId))) {
+            } else if (isValidMoveRook(ev.toElement.id, currEleId) || (isValidMoveBishop(ev.toElement.id, currEleId))) {
                 var eleId = ev.dataTransfer.getData('text');
                 var ele = document.getElementById(eleId);
                 ev.target.appendChild(ele);
