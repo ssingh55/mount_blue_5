@@ -31,11 +31,12 @@ function newBoard() {
 
 //class details
 class Items{
-    constructor(divEle, image, imageId, imageClass){
+    constructor(divEle, image, imageId, imageClass,currPostn){
         this.divEle = divEle;
         this.image = image;
         this.imageId = imageId;
         this.imageClass = imageClass;
+        this.currPostn = divEle;
     }
 }
 
@@ -45,7 +46,7 @@ function itemsAssignment(divEle, image, imageId, imageClass) {
     divEle.src = image;
     divEle.id = imageId;
     divEle.classList = imageClass;
-    itemsObject[imageId]=new Items(divEle, image, imageId, imageClass);
+    itemsObject[imageId]=new Items(divEle, image, imageId, imageClass,divEle);
 }
 
 
